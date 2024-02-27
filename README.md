@@ -4,15 +4,21 @@
 
 Here, you will find the material for our course and some other helpful links. 
 
+## Data and AI Intensive Research with Rigor and Reproducibility (DAIR3)
+
+[DAIR3 website](https://midas.umich.edu/dair-3/)
+
+The Data and AI Intensive Research with Rigor and Reproducibility (DAIR3) program includes weeklong bootcamps in the summer that focus on ethical issues in biomedical data science; data management, representation, and sharing; rigorous analytical design; the design and reporting of AI models; generative AI; reproducible workflow; and assessing findings across studies. Additionally, the bootcamp also includes grant writing sessions and research collaboration discussions.
+
 ## Slides
 
 In order, our slides may be found at the following links:
 
 1. [intro](slides/1_intro.pdf)
 2. [code notebooks](slides/2_codenotebooks.pdf)
-3. [programming](slides/3_programming.pdf)
+3. [containers](slides/3_containers.pdf)
 4. [version control](slides/4_versioncontrol.pdf)
-5. [containers](slides/5_containers.pdf)
+5. [programming](slides/5_programming.pdf)
 6. [conclusion](slides/6_souptonuts.pdf)
 
 ## Notebook Software
