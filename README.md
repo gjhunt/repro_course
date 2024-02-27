@@ -11,7 +11,7 @@ In order, our slides may be found at the following links:
 1. [intro](slides/1_intro.pdf)
 2. [code notebooks](slides/2_codenotebooks.pdf)
 3. [programming](slides/3_programming.pdf)
-4. [version control](slides/4_versioncontro.pdf)
+4. [version control](slides/4_versioncontrol.pdf)
 5. [containers](slides/5_containers.pdf)
 6. [conclusion](slides/6_souptonuts.pdf)
 
@@ -65,7 +65,7 @@ For those wishing to follow along with the containerization software, we recomme
 
 Once one of the containerization software choices has been installed, one may try pulling one of our images below. 
 
-** Images **
+**Images**
 
 - A basic reproducibility image: [hub.docker.com/r/gjhunt/repro](https://hub.docker.com/r/gjhunt/repro)
 
