@@ -1,14 +1,8 @@
 # Everyday Reproducibility
 
-**Welcome to the webpage for our short course on everyday reproducibility.**
+**Welcome to everyday computational reproducibility.**
 
-Here, you will find the material for our course and some other helpful links. 
-
-## Data and AI Intensive Research with Rigor and Reproducibility (DAIR3)
-
-[DAIR3 website](https://midas.umich.edu/dair-3/)
-
-The Data and AI Intensive Research with Rigor and Reproducibility (DAIR3) program includes weeklong bootcamps in the summer that focus on ethical issues in biomedical data science; data management, representation, and sharing; rigorous analytical design; the design and reporting of AI models; generative AI; reproducible workflow; and assessing findings across studies. Additionally, the bootcamp also includes grant writing sessions and research collaboration discussions.
+Here, you will find the material for and some other helpful links. 
 
 ## Slides
 
@@ -16,17 +10,19 @@ In order, our slides may be found at the following links:
 
 1. [intro](slides/1_intro.pdf)
 2. [code notebooks](slides/2_codenotebooks.pdf)
-3. [containers](slides/3_containers.pdf)
-4. [version control](slides/4_versioncontrol.pdf)
-5. [programming](slides/5_programming.pdf)
+3. [programming](slides/3_programming.pdf)
+4. [version control](slides/4_versioncontro.pdf)
+5. [containers](slides/5_containers.pdf)
 6. [conclusion](slides/6_souptonuts.pdf)
 
 ## Notebook Software
 
-Before our course, we highly recommend that participants download and have installed some type of notebook writing software. In particular we recommend either of the following pieces of software: 
+Before our course, we highly recommend that participants download and have installed some type of notebook writing software. For example, either:
 
 1. [jupyter lab](https://jupyter.org), or,
 2. [RStudio](https://posit.co/downloads/)
+
+In particular, we really recommend using **jupyter lab**. 
 
 In lieu of downloading these, one may use them on the web:
 
@@ -71,7 +67,7 @@ For those wishing to follow along with the containerization software, we recomme
 
 Once one of the containerization software choices has been installed, one may try pulling one of our images below. 
 
-**Images**
+** Images **
 
 - A basic reproducibility image: [hub.docker.com/r/gjhunt/repro](https://hub.docker.com/r/gjhunt/repro)
 
