@@ -67,7 +67,7 @@ For those wishing to follow along with the containerization software, we recomme
 
 Once one of the containerization software choices has been installed, one may try pulling one of our images below. 
 
-** Images **
+**Images**
 
 - A basic reproducibility image: [hub.docker.com/r/gjhunt/repro](https://hub.docker.com/r/gjhunt/repro)
 
