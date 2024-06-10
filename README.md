@@ -9,10 +9,10 @@ Here, you will find the material for and some other helpful links.
 In order, our slides may be found at the following links:
 
 1. [intro](slides/1_intro.pdf)
-2. [code notebooks](slides/2_codenotebooks.pdf)
-3. [programming](slides/3_programming.pdf)
-4. [version control](slides/4_versioncontro.pdf)
-5. [containers](slides/5_containers.pdf)
+2. [notebooks](slides/2_notebooks.pdf)
+3. [version control](slides/3_versioncontrol.pdf)
+4. [containers](slides/4_containers.pdf)
+5. [programming](slides/5_programming.pdf)
 6. [conclusion](slides/6_souptonuts.pdf)
 
 ## Notebook Software
