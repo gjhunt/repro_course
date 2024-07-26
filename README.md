@@ -8,12 +8,18 @@ Here, you will find the material for and some other helpful links.
 
 In order, our slides may be found at the following links:
 
-1. [intro](slides/1_intro.pdf)
-2. [notebooks](slides/2_notebooks.pdf)
-3. [version control](slides/3_versioncontrol.pdf)
-4. [containers](slides/4_containers.pdf)
-5. [programming](slides/5_programming.pdf)
-6. [conclusion](slides/6_souptonuts.pdf)
+1. [intro](slides/00_intro.html)
+2. [notebooks](slides/01_notebooks.html)
+3. [programming](slides/02_programming.html)
+4. [version control](slides/03_versioncontrol.html)
+5. [containers](slides/04_containers.html)
+6. [conclusion](slides/05_conclusion.html)
+
+as well as some exercises to go along
+
+1. [notebook ex](slides/10_note_ex.html)
+1. [prog ex](slides/11_prog_ex.html)
+1. [container ex](slides/12_container_ex.html)
 
 ## Notebook Software
 
@@ -22,7 +28,7 @@ Before our course, we highly recommend that participants download and have insta
 1. [jupyter lab](https://jupyter.org), or,
 2. [RStudio](https://posit.co/downloads/)
 
-In particular, we really recommend using **jupyter lab**. 
+In particular, we really recommend using **jupyter lab** and will be using it in the course. 
 
 In lieu of downloading these, one may use them on the web:
 
@@ -73,13 +79,11 @@ Once one of the containerization software choices has been installed, one may tr
 
 One may pull this using podman as
 ```
-podman run -it --rm -p 8888:8888 gjhunt/repro
+podman run -it --rm -p 8888:8888 -p 8787:8787 gjhunt/repro
 ```
 or with docker as
 ```
-docker run -it --rm -p 8888:8888 gjhunt/repro
+docker run -it --rm -p 8888:8888 -p 8787:8787 gjhunt/repro
 ```
-
-The following docker image will also be used: [https://osf.io/download/xbjp4/](https://osf.io/download/xbjp4/). This image is large, so we recommend pulling it in advance if users with to follow along with its use in the course.
 
 

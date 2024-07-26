@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Everyday Reproducibilty</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/theme/adjw.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Everyday Reproducibilty</h1>
+</section>
+
+<section id="course-outline" class="slide level1">
+<h1>Course Outline</h1>
+<ul>
+<li>Reproducibility and its Goals</li>
+<li>Code Notebooks</li>
+<li>Reproducible Programming</li>
+<li>Version Control</li>
+<li>Containers</li>
+<li>Putting everything together</li>
+</ul>
+</section>
+<section id="jsu-schedule" class="slide level1">
+<h1>JSU Schedule</h1>
+<p>All session in Room 147</p>
+<ol type="1">
+<li><strong>Introduction, Notebooks, Programming</strong></li>
+</ol>
+<p>Sunday July 28th, 1:15 PM – 3:15 PM</p>
+<ol start="2" type="1">
+<li><strong>Working session</strong></li>
+</ol>
+<p>Tuesday July 30th, 10:15 AM – 12:15 PM</p>
+<ol start="3" type="1">
+<li><strong>Version Control, Containers, Conclusion</strong></li>
+</ol>
+<p>Tuesday July 30th, 10:15 AM – 12:15 PM</p>
+<ol start="4" type="1">
+<li><strong>Working session</strong></li>
+</ol>
+<p>Wednesday July 31st, 3:15 PM – 5:15 PM</p>
+</section>
+<section id="overview-reproducibility-and-its-goals"
+class="slide level1">
+<h1>Overview: Reproducibility and its Goals</h1>
+</section>
+<section id="outline" class="slide level1">
+<h1>Outline:</h1>
+<ul>
+<li>What is “reproducibility”?</li>
+<li>Goals of reproducibility</li>
+<li>Discussion</li>
+</ul>
+</section>
+<section id="reproducibility" class="slide level1">
+<h1>Reproducibility…</h1>
+<p>… and other words that start with “R”</p>
+<ul>
+<li>reproducibility</li>
+<li>replicability</li>
+<li>repeatability</li>
+<li>robustness</li>
+<li>rigor</li>
+</ul>
+<p><strong>Our focus:</strong> computational reproducibility</p>
+</section>
+<section id="reproducibility-goals" class="slide level1">
+<h1>Reproducibility: goals</h1>
+<p>What are we really trying to achieve?</p>
+<ul>
+<li><strong>Reproducible:</strong> Entire analysis fully and exactly
+reproducible</li>
+<li><strong>User friendly:</strong> Easy to access, install, run</li>
+<li><strong>Transparent:</strong> Easy to inspect, understand,
+modify</li>
+<li><strong>Reusable:</strong> Others may build upon the project</li>
+<li><strong>Version controlled</strong></li>
+<li><strong>Archived</strong></li>
+</ul>
+</section>
+<section id="fully-and-exactly-reproducible" class="slide level1">
+<h1>Fully and exactly reproducible</h1>
+<ul>
+<li>The “most original” data should be available</li>
+<li>Include all code necessary to get from the original data to the
+final results</li>
+<li>The code should directly produce the plots / tables / numbers in the
+paper</li>
+<li>All software dependencies should be specified and ideally included
+with the code</li>
+<li>Random seeds specified</li>
+<li>etc.</li>
+</ul>
+</section>
+<section id="user-friendly" class="slide level1">
+<h1>User friendly</h1>
+<ul>
+<li>Code easy to access and inspect, ideally even without
+downloading</li>
+<li>Should require minimal effort for a user to install and run</li>
+<li>Should cause minimal disruption to a user’s resources (e.g., not
+install unwanted software on their system)</li>
+<li>etc.</li>
+</ul>
+</section>
+<section id="transparent" class="slide level1">
+<h1>Transparent</h1>
+<ul>
+<li>Code should be organized and well documented, ideally in a notebook
+format</li>
+<li>Analytical choices, such as statistical tuning parameters, should be
+clearly highlighted</li>
+<li>Interactive elements such as widgets should be used when appropriate
+to help users explore the impact of different analytical choices</li>
+<li>Results-caching should be used so that users can quickly re-run
+specific parts of the analysis, perhaps after making minor
+modifications</li>
+<li>Both raw data and cleaned / re-formatted data should be made
+available when appropriate, e.g., when the raw data is difficult to use
+or understand without additional processing</li>
+<li>etc.</li>
+</ul>
+</section>
+<section id="reusable" class="slide level1">
+<h1>Reusable</h1>
+<ul>
+<li>Code should be portable across platforms</li>
+<li>Code should be modular to facilitate re-use in other project</li>
+<li>Depending on the project, creating a new software package may be
+helpful</li>
+<li>etc.</li>
+</ul>
+</section>
+<section id="permanently-archived" class="slide level1">
+<h1>Permanently archived</h1>
+<ul>
+<li>In a (file) format suitable for long-term preservation</li>
+<li>in a (physical) format suitable for long-term preservation</li>
+</ul>
+</section>
+<section id="version-controlled" class="slide level1">
+<h1>Version controlled</h1>
+<ul>
+<li>This aids transparency</li>
+<li>Ultimately, most valuable for <strong>you</strong></li>
+</ul>
+</section>
+<section id="goals" class="slide level1">
+<h1>Goals</h1>
+<ol type="1">
+<li>Exactly reproducible</li>
+<li>User friendly</li>
+<li>Transparent</li>
+<li>Reusable</li>
+<li>Archived</li>
+<li>Version controlled</li>
+</ol>
+<p><strong>These are distinct goals</strong></p>
+<p><strong>They pose distinct challenges</strong></p>
+</section>
+<section id="focus-everyday-reproducibility" class="slide level1">
+<h1>Focus: <em>Everyday reproducibility</em></h1>
+<ul>
+<li>Most of our goals are readily achievable for “everyday”
+projects</li>
+<li>Hard challenges we won’t discuss:
+<ul>
+<li>restricted access datasets</li>
+<li>massive datasets</li>
+<li>proprietary software</li>
+<li>highly computationally intensive code</li>
+</ul></li>
+</ul>
+</section>
+<section id="discussion" class="slide level1">
+<h1>Discussion</h1>
+<ul>
+<li>Which reproducibility goals have you attempted on a project?<br />
+Which do you regularly strive for?</li>
+<li>What challenges have you run into?<br />
+</li>
+<li>Any interesting / notable experiences?<br />
+</li>
+<li>What lessons have you learned?</li>
+</ul>
+</section>
+<section id="discussion-1" class="slide level1">
+<h1>Discussion</h1>
+<p>What tools do you find helpful?</p>
+</section>
+<section id="some-useful-tools" class="slide level1">
+<h1>Some useful tools</h1>
+<ul>
+<li>notebooks / markdown
+<ul>
+<li>R Studio, Jupyter</li>
+<li>jupyter notebooks, quarto notebooks,</li>
+<li>jupytext and quarto</li>
+</ul></li>
+<li>git</li>
+<li>dependency management
+<ul>
+<li>Docker</li>
+<li><code>venv</code> (python virtual environments)</li>
+<li><code>renv</code> (R virtual environments)</li>
+</ul></li>
+</ul>
+</section>
+<section id="some-useful-tools-1" class="slide level1">
+<h1>Some useful tools</h1>
+<ul>
+<li>R and python packages</li>
+<li>results caching
+<ul>
+<li>makefiles</li>
+<li>pickle</li>
+<li>etc</li>
+</ul></li>
+<li>output formatting
+<ul>
+<li>kable</li>
+<li>xtable</li>
+</ul></li>
+<li>sharing
+<ul>
+<li>github</li>
+<li>zenodo</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="/home/greg/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="/home/greg/reveal.js/plugin/notes/notes.js"></script>
+  <script src="/home/greg/reveal.js/plugin/search/search.js"></script>
+  <script src="/home/greg/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="/home/greg/reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+FROM jupyter/datascience-notebook
+RUN R -e "install.packages('ggplot2', repos='http://cran.us.r-project.org')"
+COPY --chown=1000 data.csv data.csv
+COPY --chown=1000 analysis.ipynb analysis.ipynb
+CMD jupyter lab

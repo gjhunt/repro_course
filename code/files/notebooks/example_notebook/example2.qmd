@@ -1,0 +1,36 @@
+---
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd,R'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.7
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+```{r}
+url = 'https://tinyurl.com/35vnmbzm'
+titanic = read.csv(url)
+```
+
+```{r}
+head(titanic,n=3)
+```
+
+```{r}
+titanic$Pclass <- as.factor(titanic$Pclass)
+```
+
+```{r}
+library('tidyverse')
+```
+
+```{r}
+ggplot(data=titanic,mapping=aes(x=Survived,fill=Pclass))+geom_bar()
+```
+

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Putting Everything Together</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/theme/adjw.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Putting Everything Together</h1>
+</section>
+
+<section id="outline" class="slide level1">
+<h1>Outline</h1>
+<ul>
+<li>Organizing the analysis</li>
+<li>“From soup to nuts”</li>
+<li>Sharing</li>
+<li>Archiving</li>
+<li>A real example</li>
+</ul>
+</section>
+<section id="organizing-the-analysis" class="slide level1">
+<h1>Organizing the analysis</h1>
+</section>
+<section id="directory-structure" class="slide level1">
+<h1>Directory structure</h1>
+<ul>
+<li>Highly personal – no single “correct” structure</li>
+<li>Also varies by project</li>
+</ul>
+</section>
+<section id="directory-structure-1" class="slide level1">
+<h1>Directory structure</h1>
+<ul>
+<li><code>data</code>
+<ul>
+<li><code>data/original</code></li>
+<li><code>data/processed</code></li>
+</ul></li>
+<li><code>analyses</code>
+<ul>
+<li>markdown files</li>
+<li>scripts (but see below)</li>
+</ul></li>
+<li><code>package</code> (optional)
+<ul>
+<li>for general stand-alone use, <em>and / or</em></li>
+<li>well-written helper routines, called by main analysis
+(<code>.md</code> files)</li>
+</ul></li>
+<li><code>results</code>
+<ul>
+<li>fitted models, full simulation output, etc.</li>
+<li>maybe <code>results/cached</code> + <code>results/final</code></li>
+</ul></li>
+<li><code>output</code>
+<ul>
+<li>plots, tables, etc., to include directly in paper</li>
+<li>(sometimes) notebook output</li>
+</ul></li>
+</ul>
+</section>
+<section id="makefiles" class="slide level1">
+<h1>Makefiles</h1>
+<ul>
+<li><a
+href="https://en.wikipedia.org/wiki/Make_(software)"><code>make</code></a>
+– since 1976</li>
+<li>Created to provide the commands necessary to compile a software
+project</li>
+<li>Also great for organizing a reproducible analysis</li>
+<li>Organize commands into “rules” that build specific outputs</li>
+<li><a
+href="https://github.com/adamSales/rebarLoop/blob/docker/makefile">Example</a></li>
+</ul>
+</section>
+<section id="makefile-rules" class="slide level1">
+<h1>Makefile rules</h1>
+<ul>
+<li>Like directory structure, personal and varies by project</li>
+<li>For nearly all projects:
+<ul>
+<li><code>all</code>: runs everything, typically the default</li>
+<li><code>clean</code>: delete all output (including processed data,
+cached results)</li>
+<li><code>download</code>: (re-)download data from its original
+source</li>
+</ul></li>
+<li>Also common:
+<ul>
+<li><code>preprocess</code><br />
+(or <code>clean_data</code>, or …)</li>
+<li><code>main_analysis</code><br />
+(might simply call other rules, e.g., <code>eda</code>,
+<code>fitmodels</code>, etc.)</li>
+<li><code>output</code>: create plots, tables, etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="results-caching" class="slide level1">
+<h1>Results caching</h1>
+<ul>
+<li><p>Analysis should be divided into steps, with results saved after
+each step</p></li>
+<li><p>One “step” might be:</p>
+<ul>
+<li>A digestible amount of code</li>
+<li>A computationally intensive procedure</li>
+<li>A logical breaking point</li>
+<li>The general goal:<br />
+If someone wonders, <em>how did they do XYZ?</em>
+<ul>
+<li>There is an “obvious” markdown file to look in</li>
+<li>It is simple to read, quick to run, and (ideally) easy to edit</li>
+</ul></li>
+</ul></li>
+<li><p>Each markdown file should clearly show its inputs and
+outputs<br />
+<a
+href="https://github.com/adamSales/rebarLoop/blob/docker/analysis/05_outputs.Rmd">Example</a></p></li>
+<li><p>Makefiles can also be used to specify file dependencies</p></li>
+</ul>
+</section>
+<section id="from-soup-to-nuts" class="slide level1">
+<h1>“From soup to nuts”</h1>
+</section>
+<section id="one-command" class="slide level1">
+<h1>One command</h1>
+<p><em>The user should be able to run your entire analysis – everything
+– with a single command.</em></p>
+<p>For example:</p>
+<ul>
+<li><code>make</code></li>
+<li><code>docker run myanalysis</code></li>
+<li><code>run_all.sh</code></li>
+</ul>
+</section>
+<section id="data-soup" class="slide level1">
+<h1>Data (soup)</h1>
+<p><em>The code should automatically (re-)download the data from its
+original source</em></p>
+<p><strong>Don’t:</strong></p>
+<ul>
+<li class="fragment">Download the data from www.somewhere.com.<br />
+</li>
+<li class="fragment">Go to “data” then select “stage 2” and download the
+.zip file.<br />
+</li>
+<li class="fragment">Unzip and follow the instructions in the
+README.<br />
+</li>
+<li class="fragment">After running the preprocessing script as described
+in the README, place the .csv files into the data directory and …</li>
+</ul>
+<ul>
+<li class="fragment"><strong>Do:</strong></li>
+<li class="fragment">Use <code>curl</code>, <code>wget</code>, etc.</li>
+<li class="fragment">Automate everything</li>
+<li class="fragment">Retain the original data, but keep it clearly
+separated from “cleaned” data</li>
+</ul>
+</section>
+<section id="final-results-nuts" class="slide level1">
+<h1>Final results (nuts)</h1>
+<p>“Final results”:</p>
+<ul>
+<li class="fragment">Plots</li>
+<li class="fragment">Tables</li>
+<li class="fragment">Numerical results (e.g., “<span
+class="math inline">\(p = 0.02\)</span>”)</li>
+<li class="fragment"><em>All final results should be output verbatim by
+your analysis</em></li>
+</ul>
+</section>
+<section id="final-results-nuts-1" class="slide level1">
+<h1>Final results (nuts)</h1>
+<ul>
+<li>Numerical results (e.g., “<span class="math inline">\(p =
+0.02\)</span>”)
+<ul>
+<li>Embed in a notebook</li>
+<li>Should be easy to find</li>
+</ul></li>
+<li>Tables
+<ul>
+<li><a
+href="https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf"><code>xtable</code></a></li>
+<li><a
+href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_pdf.pdf"><code>kable</code></a></li>
+<li><a
+href="https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf"><code>stargazer</code></a></li>
+</ul></li>
+<li>Plots
+<ul>
+<li><a
+href="https://ggplot2.tidyverse.org/reference/annotate.html"><code>annotate()</code></a>
+(ggplot2)</li>
+<li><a
+href="https://cran.r-project.org/web/packages/tikzDevice/vignettes/tikzDevice.pdf"><code>tikzDevice</code></a></li>
+</ul></li>
+<li>If you absolutely must edit by hand:
+<ul>
+<li><code>diff</code> and <code>patch</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="sharing" class="slide level1">
+<h1>Sharing</h1>
+</section>
+<section id="easily-accessible" class="slide level1">
+<h1>Easily accessible</h1>
+<p>To make your analysis easily accessible,</p>
+<ul>
+<li><p>Post the code somewhere it is easy to browse (e.g.,
+github)</p></li>
+<li><p>Post a fully self-contained docker image</p></li>
+<li><p>Post (or link to) the data somewhere you can download it
+directly</p></li>
+<li><p>Post any packages on CRAN, PyPi, etc.</p></li>
+<li><p>Keep the versions of your project in sync and leave a trail,
+e.g.,</p>
+<ul>
+<li>Include your dockerfile on github</li>
+<li>Have your docker image build directly from github
+<ul>
+<li>In the docker build, output a timestamp and the git commit that is
+used</li>
+</ul></li>
+</ul></li>
+<li><p>Cross-reference the websites</p></li>
+</ul>
+</section>
+<section id="archiving" class="slide level1">
+<h1>Archiving</h1>
+</section>
+<section id="discussion" class="slide level1">
+<h1>Discussion</h1>
+<ul>
+<li>Where might you archive your analysis (e.g., github)?</li>
+<li>What are strengths / weaknesses of those options?</li>
+</ul>
+</section>
+<section id="notable-options" class="slide level1">
+<h1>Notable options</h1>
+<ul>
+<li>Zenodo</li>
+<li>Open Science Foundation</li>
+</ul>
+<p>Also, keep your own copy!</p>
+</section>
+<section id="a-real-example" class="slide level1">
+<h1>A real example</h1>
+</section>
+<section id="a-real-example-1" class="slide level1">
+<h1>A real example</h1>
+<p>The paper: <a
+href="https://arxiv.org/abs/2105.03529">https://arxiv.org/abs/2105.03529</a></p>
+<p>The code: <a
+href="https://github.com/adamSales/rebarLoop">https://github.com/adamSales/rebarLoop</a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="/home/greg/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="/home/greg/reveal.js/plugin/notes/notes.js"></script>
+  <script src="/home/greg/reveal.js/plugin/search/search.js"></script>
+  <script src="/home/greg/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="/home/greg/reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

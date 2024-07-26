@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Notebooks</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/home/greg/reveal.js/dist/theme/adjw.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Notebooks</h1>
+</section>
+
+<section id="code-notebooks" class="slide level1">
+<h1>Code Notebooks</h1>
+<p>In order to make analysis <strong>practically reproducible</strong>,
+one should strive to make analysis</p>
+<ol type="1">
+<li>easy to interact with</li>
+<li>easy to understand</li>
+</ol>
+<p><strong>code notebooks</strong> help achieve these goals via a
+<strong>literate programming</strong> format that interweaves</p>
+<ol type="1">
+<li>text</li>
+<li>code</li>
+<li>output</li>
+</ol>
+<p>all together.</p>
+</section>
+<section id="popular-notebooks-and-software" class="slide level1">
+<h1>Popular Notebooks and Software</h1>
+<p>Often, code notebooks and their editing software are discussed as a
+single object. However one may separate</p>
+<ol type="1">
+<li>the notebook file format, from</li>
+<li>the software used to interact with that format</li>
+</ol>
+<p>Two most popular notebook formats/software:</p>
+<ol type="1">
+<li>“jupyter”: <strong>jupyter lab</strong> software and
+<code>.ipynb</code> format</li>
+<li>“quarto”: <strong>Rstudio</strong> software and <code>.qmd</code>
+format</li>
+</ol>
+</section>
+<section id="jupyter-lab-example" class="slide level1">
+<h1>Jupyter Lab Example</h1>
+<p>An example of <strong>jupyter lab</strong>:</p>
+<p><img data-src="./figs/notebook_ex1_2.jpg" style="width:100.0%"
+alt="notebook_ex" /><br />
+</p>
+</section>
+<section id="text-in-markdown" class="slide level1">
+<h1>Text in <code>markdown</code></h1>
+<p><code>jupyter</code> allows text to be written in <a
+href="https://www.markdownguide.org/"><code>markdown</code></a> which is
+a light-weight markup language.</p>
+<p><strong>More-or-less:</strong> if you can display it on a webpage,
+you can write it in <code>markdown</code>. (Additionally, one can
+directly embed <code>html</code>)</p>
+<p>One can also use extended markdown languages like <code>myst</code>
+which enables features like references, figures, bibliographies, …</p>
+<p>In any case, <code>jupyter</code>’s markdown enables rich-text
+commentary on <strong>both the code and the output</strong></p>
+<p>(In fact, this presentation is written in <code>markdown</code>)</p>
+</section>
+<section id="basic-markdown" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown1.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-1" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown2.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-2" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown3.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-3" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown4.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-4" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown5.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-5" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown6.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-6" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown7.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="basic-markdown-7" class="slide level1">
+<h1>Basic Markdown</h1>
+<p><img data-src="./figs/markdown8.png" style="width:100.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="code-basic-output" class="slide level1">
+<h1>Code: Basic Output</h1>
+<p>Interweaved with the rich-text markdown commentary, one intersperses
+<strong>code and in-line output</strong>, e.g.,</p>
+<p><img data-src="./figs/notebook_code1.png" style="width:80.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="code-interactive-widgets" class="slide level1">
+<h1>Code: Interactive Widgets</h1>
+<p>One can also embed <strong>interactive widgets</strong>, though this
+is somewhat notebook/language-specific. For example, in <code>R</code>
+one can use <code>htmlwidgets</code> or <code>plotly</code>, e.g.,</p>
+<p><img data-src="./figs/notebook_code2.png" style="width:80.0%"
+alt="alt" /><br />
+</p>
+</section>
+<section id="code-languages" class="slide level1">
+<h1>Code: Languages</h1>
+<p>There are <strong>many</strong> language backends that jupyter can
+use. (These are called <strong>kernels</strong> in jupyter-speak).
+Jupyter lists well over 100 available kernels <a
+href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">here</a>
+including kernels for:</p>
+<ul>
+<li class="fragment"><code>python</code>,</li>
+<li class="fragment"><code>r</code>,</li>
+<li class="fragment"><code>julia</code>,</li>
+<li class="fragment"><code>stata</code>,</li>
+<li class="fragment"><code>sql</code>,</li>
+<li class="fragment"><code>octave</code>,</li>
+<li class="fragment"><code>matlab</code>,</li>
+<li class="fragment"><code>java</code>,</li>
+<li class="fragment"><code>go</code>,</li>
+<li class="fragment"><code>C</code>,</li>
+<li class="fragment">…</li>
+</ul>
+</section>
+<section id="exporting" class="slide level1">
+<h1>Exporting</h1>
+<p>One can <strong>export</strong> a <strong>.ipynb</strong> notebook
+using <strong>jupyter</strong> to many differnt formats like:
+<code>html</code>, <code>markdown</code> <code>pdf</code>,
+<code>reveal.js</code> html slides, …, and even an executable
+script.</p>
+<p>This can all be done using the command</p>
+<p><code>jupyter nbconvert notebook.ipynb --to=format</code></p>
+<p><img data-src="figs/nbconvert_cropped.png" alt="alt" /><br />
+</p>
+</section>
+<section id="exporting-html" class="slide level1">
+<h1>Exporting: HTML</h1>
+<p>Nicely, for a HTML export many of the interactive widgets still
+work!</p>
+<p><img data-src="figs/html_export.png" alt="alt" /><br />
+</p>
+</section>
+<section id="exporting-script" class="slide level1">
+<h1>Exporting: Script</h1>
+<p>Exporting as a script gives us basic executable script</p>
+<p><img data-src="figs/script_export.png" alt="alt" /><br />
+</p>
+</section>
+<section id="notebook-interoperability" class="slide level1">
+<h1>Notebook Interoperability</h1>
+<p>One can also use third-party tools to convert/maintain versions in
+<strong>other notebook formats</strong>.</p>
+<p>For this, we find the tool <code>jupytext</code> to be
+invaluable.</p>
+<p>We can install via</p>
+<pre><code>pip install jupytext
+</code></pre>
+<p><img data-src="figs/install_jupytext.png"
+alt="jupytext_install" /><br />
+</p>
+</section>
+<section id="notebook-interoperability-1" class="slide level1">
+<h1>Notebook Interoperability</h1>
+<p><code>jupytext</code> <strong>synchronously</strong> propagates
+changes in the <code>jupyter</code> notebook (when the
+<code>.ipynb</code> is saved) to other formats like
+<code>markdown</code>, annotated scripts, <code>rmarkdown</code>,
+<code>quarto</code>, …</p>
+<p>via the command</p>
+<pre><code>jupytext notebook.ipynb --set-formats=format1,format2,...</code></pre>
+<p><img data-src="figs/jupytext_set.png" style="width:80.0%"
+alt="jupytext_setformats" /><br />
+</p>
+</section>
+<section id="jupytext-change" class="slide level1">
+<h1>Jupytext Change</h1>
+<p>Changes are <strong>synchronously</strong> propagated from
+<code>.ipynb</code> to the other formats and vice-versa. (Just be wary
+of editing two files at once!)</p>
+<p><img data-src="figs/jupytext_change.png" style="width:80.0%"
+alt="jupytext_change" /><br />
+</p>
+</section>
+<section id="exporting-and-interoperability" class="slide level1">
+<h1>Exporting and Interoperability</h1>
+<ul>
+<li class="fragment"><strong>Exporting</strong> via
+<code>nbconvert</code> mostly immortalizes analysis for display e.g. as
+<code>HTML</code> or a <code>PDF</code></li>
+<li class="fragment">We can also export executable scripts and (via
+tools like <code>jupytext</code>) other notebook formats for
+<ul>
+<li class="fragment">deployment in <strong>production</strong>,</li>
+<li class="fragment">deployment in a <strong>non-interactive
+cluster</strong>,</li>
+<li class="fragment">or making analysis more amenable for
+<strong>version control</strong></li>
+</ul></li>
+<li class="fragment">Exporting to display formats and other notebook
+formats also makes them more <strong>sharable</strong> and thus analysis
+more easily <strong>reproducible</strong>
+<ul>
+<li class="fragment">we provide same analysis in many notebook formats
+so users have choice</li>
+<li class="fragment">this is probably a good final step before sharing
+analysis</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-latest-r-studio-notebook-format"
+class="slide level1">
+<h1>quarto: latest R studio notebook format</h1>
+<ul>
+<li class="fragment"><code>quarto</code> is the latest notebook format
+from Posit (RStudio).</li>
+</ul>
+<ul>
+<li class="fragment">Largely, it supplants R notebooks and R markdown
+formats (and is back-compatable).</li>
+</ul>
+<ul>
+<li class="fragment">Technically, <code>quarto</code> is a command line
+publishing tool. This means:
+<ul>
+<li class="fragment">can be run via the command line</li>
+<li class="fragment">don’t need <code>R</code> or <code>Rstudio</code>
+<strong>at all</strong> to run <code>quarto</code></li>
+<li class="fragment">can be used to weave documents in
+<code>python</code> or <code>julia</code> (can even use a
+<code>jupyter</code> back-end)</li>
+</ul></li>
+<li class="fragment">Nonetheless, still has great integration in
+<code>Rstudio</code> with a nice WYSIWYG editor.</li>
+<li class="fragment">Rstudio/<code>quarto</code> are a similar, nice
+alternative to jupyter lab/jupyter notebooks (in my opinion)</li>
+<li class="fragment">can edit <code>quarto</code> documents in
+<code>jupyter</code></li>
+</ul>
+</section>
+<section id="quarto-and-jupyter" class="slide level1">
+<h1>quarto and jupyter</h1>
+<p><code>quarto</code>/Rstudio and <code>jupyter</code>/jupyter lab are
+both great notebook formats/tools. One major difference:</p>
+<ul>
+<li><p><code>quarto</code> uses markdown-like <code>.qmd</code> while
+<code>jupyter</code> uses JSON <code>.ipynb</code></p>
+<ul>
+<li><code>.qmd</code> are probably easier for version control
+(e.g. <code>git</code>) and other editors (e.g. VSCode)</li>
+</ul></li>
+<li><p><code>quarto</code> is more geared towards publishing polished
+formats (e.g. figures, tables, references, …)</p>
+<ul>
+<li><code>myst</code> extension to markdown can enable this for
+<code>jupyter</code></li>
+</ul></li>
+<li><p><code>.qmd</code> doesn’t store output, <code>.ipynb</code>
+encodes/stores output</p></li>
+<li><p><strong>A useful idiom</strong>: do your analysis in
+<code>jupyter</code> and mirror into several formats e.g. ipynb, md, R,
+qmd,…</p></li>
+</ul>
+</section>
+<section id="notebooks-and-reproducibility" class="slide level1">
+<h1>Notebooks and Reproducibility</h1>
+<p>Why do notebooks help <strong>reproducibility</strong>:</p>
+<ol type="1">
+<li class="fragment">literate programming: interweaving
+code/commentary/output
+<ul>
+<li class="fragment">allows rich commentary on code, output</li>
+<li class="fragment">develops a narrative that is easy to read</li>
+<li class="fragment">document diagnostic/exploratory/micro-decision
+analysis</li>
+</ul></li>
+<li class="fragment">keeps commentary/output close to code
+<ul>
+<li class="fragment">good tool for playing with code, immediately
+observing output</li>
+</ul></li>
+<li class="fragment">good for showcasing results and interoperability
+<ul>
+<li class="fragment">can be converted to many sharable formats (html,
+pdf, …)</li>
+<li class="fragment">can convert <strong>among</strong> the notebook
+formats</li>
+</ul></li>
+<li class="fragment">creates a reproducible record
+<ul>
+<li class="fragment">code automatically generates results from data</li>
+<li class="fragment">this forces documentation on how the results were
+produced</li>
+</ul></li>
+<li class="fragment">promotes good code organization via chunking</li>
+<li class="fragment">software/formats not proprietary, easy to
+distribute</li>
+</ol>
+</section>
+<section id="some-potential-downsides" class="slide level1">
+<h1>Some Potential Downsides</h1>
+<p>While code notebooks can be great, there are some <strong>potential
+issues</strong>, including:</p>
+<ol type="1">
+<li class="fragment">chunks can be run in non-sequential order, making
+them not reproducible (soln: re-run all analysis at the end
+sequentially)</li>
+<li class="fragment">saved format of notebook may make version control
+difficult (soln: jupytext)</li>
+<li class="fragment">not great for non-interactive environments (soln:
+jupytext)</li>
+<li class="fragment">conversion among various formats isn’t 100%
+fool-proof</li>
+</ol>
+</section>
+<section id="discussion" class="slide level1">
+<h1>Discussion</h1>
+<ul>
+<li>Do you use notebooks regularly? Might you, now?</li>
+<li>Where do you find notebooks to be helpful?</li>
+<li>Where do you find notebooks <strong>not</strong> to be helpful?</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="/home/greg/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="/home/greg/reveal.js/plugin/notes/notes.js"></script>
+  <script src="/home/greg/reveal.js/plugin/search/search.js"></script>
+  <script src="/home/greg/reveal.js/plugin/zoom/zoom.js"></script>
+  <script src="/home/greg/reveal.js/plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
