@@ -8,18 +8,18 @@ Here, you will find the material for and some other helpful links.
 
 In order, our slides may be found at the following links:
 
-1. [intro](slides/00_intro.html)
-2. [notebooks](slides/01_notebooks.html)
-3. [programming](slides/02_programming.html)
-4. [version control](slides/03_versioncontrol.html)
-5. [containers](slides/04_containers.html)
-6. [conclusion](slides/05_conclusion.html)
+1. [intro](slides/00_intro.pdf)
+2. [notebooks](slides/01_notebooks.pdf)
+3. [programming](slides/02_programming.pdf)
+4. [version control](slides/03_versioncontrol.pdf)
+5. [containers](slides/04_containers.pdf)
+6. [conclusion](slides/05_conclusion.pdf)
 
 as well as some exercises to go along
 
-1. [notebook ex](slides/10_note_ex.html)
-1. [prog ex](slides/11_prog_ex.html)
-1. [container ex](slides/12_container_ex.html)
+1. [notebook ex](slides/10_note_ex.pdf)
+1. [prog ex](slides/11_prog_ex.pdf)
+1. [container ex](slides/12_container_ex.pdf)
 
 ## Notebook Software
 
@@ -40,13 +40,13 @@ Installation guides:
 **Jupyter**
 
 - General instructions: [https://jupyter.org/install](https://jupyter.org/install)
-- Windows specifically: [https://crib.utwente.nl/manual/pages/jupyterlab-install-guide/index.html](https://crib.utwente.nl/manual/pages/jupyterlab-install-guide/index.html)
+- Windows specifically: [https://crib.utwente.nl/manual/pages/jupyterlab-install-guide/index.pdf](https://crib.utwente.nl/manual/pages/jupyterlab-install-guide/index.pdf)
 
 
 **rstudio**
 
-- General instructions: [https://rstudio-education.github.io/hopr/starting.html](https://rstudio-education.github.io/hopr/starting.html)
-- Windows specifically: [https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.html](https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.html)
+- General instructions: [https://rstudio-education.github.io/hopr/starting.pdf](https://rstudio-education.github.io/hopr/starting.pdf)
+- Windows specifically: [https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf](https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf)
 
 ## Containerization Software
 
