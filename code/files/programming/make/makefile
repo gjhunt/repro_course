@@ -1,15 +1,25 @@
-.PHONY: analysis plotting all
+.PHONY: clean all
 
-analysis:
-	Rscript analysis.R
+raw.csv: raw_analysis.R
+	Rscript raw_analysis.R
 
-plotting:
+proc.csv: raw.csv proc_analysis.R
+	Rscript proc_analysis.R
+
+plot.pdf: proc.csv plotting.R
 	Rscript plotting.R
 
+hist.pdf: proc.csv plot_hist.R
+	Rscript plot_hist.R
+
 all:
-	make analysis
-	make plotting
+	make hist.pdf
+	make plot.pdf
 
 clean:
-	rm penguins.csv || true
+	rm raw.csv || true
+	rm proc.csv || true
 	rm plot.pdf || true
+	rm hist.pdf || true
+
+	
