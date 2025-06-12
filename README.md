@@ -8,18 +8,12 @@ Here, you will find the material for and some other helpful links.
 
 In order, our slides may be found at the following links:
 
-1. [intro](slides/00_intro.pdf)
+1. [goals](slides/00_goals.pdf)
 2. [notebooks](slides/01_notebooks.pdf)
 3. [programming](slides/02_programming.pdf)
 4. [version control](slides/03_versioncontrol.pdf)
 5. [containers](slides/04_containers.pdf)
-6. [conclusion](slides/05_conclusion.pdf)
-
-as well as some exercises to go along
-
-1. [notebook ex](slides/10_note_ex.pdf)
-1. [prog ex](slides/11_prog_ex.pdf)
-1. [container ex](slides/12_container_ex.pdf)
+6. [pipeline](slides/05_pipeline.pdf)
 
 ## Notebook Software
 
