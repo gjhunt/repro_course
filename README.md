@@ -42,6 +42,19 @@ Installation guides:
 - General instructions: [https://rstudio-education.github.io/hopr/starting.pdf](https://rstudio-education.github.io/hopr/starting.pdf)
 - Windows specifically: [https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf](https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf)
 
+## Version Control Software   
+  
+For version control we'll be using `git`. Here are two (very similar) guides for installing git: 
+
+1. [a guide from the `git` project](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. [a guide from `github.com`](https://github.com/git-guides/install-git)
+  
+Once you've installed `git` you should be able to got into a terminal (mac or linux) or powershell (on windows) and not get an error when running the command
+```
+git --version
+```
+
+
 ## Containerization Software
 
 For those wishing to follow along with the containerization software, we recommend that users install either:
