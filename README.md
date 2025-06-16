@@ -80,6 +80,16 @@ For those wishing to follow along with the containerization software, we recomme
 
 Once one of the containerization software choices has been installed, one may try pulling one of our images below. 
 
+Once you've successfully installed the sofware you should be able to run
+```
+podman --version
+```
+or
+```
+docker --version
+```
+without an error. 
+
 **Images**
 
 - A basic reproducibility image: [hub.docker.com/r/gjhunt/repro](https://hub.docker.com/r/gjhunt/repro)
