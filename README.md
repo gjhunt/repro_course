@@ -15,7 +15,31 @@ In order, our slides may be found at the following links:
 5. [containers](slides/04_containers.pdf)
 6. [pipeline](slides/05_pipeline.pdf)
 
-## Notebook Software
+
+## Software
+
+To get the most our of this course, we recommend that you follow along with some of the software we demonstrate. There are exercises at the end of most slide decks. 
+
+There are two primary ways you can go about this: 
+
+1. Install the software below on your own machine. 
+2. Jump straight to installing the containerization software [(click here)](#containerization-software). You can use either `podman` or `docker`. You can then run our image with all the software pre-installed by running: 
+
+```
+podman run --rm -it -p 127.0.0.1:8080:80 docker.io/gjhunt/repro
+```
+with `podman` or 
+```
+docker run --rm -it -p 127.0.0.1:8080:80 docker.io/gjhunt/repro
+```
+with `docker`. 
+
+Once you issue this command you should then go to [http://127.0.0.1:8080/](http://127.0.0.1:8080/) (Note: use http NOT http**s**, also be sure to include the port `8080`. Sometimes, web browsers try to be clever and change one or both of these things.)
+
+This is probably the easiest way to get the necessary software. 
+
+
+### Notebook Software
 
 Before our course, we highly recommend that participants download and have installed some type of notebook writing software. For example, either:
 
@@ -42,7 +66,7 @@ Installation guides:
 - General instructions: [https://rstudio-education.github.io/hopr/starting.pdf](https://rstudio-education.github.io/hopr/starting.pdf)
 - Windows specifically: [https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf](https://www.stat.colostate.edu/~jah/talks_public_html/isec2020/installRStudio.pdf)
 
-## Version Control Software   
+### Version Control Software   
   
 For version control we'll be using `git`. Here are two (very similar) guides for installing git: 
 
@@ -55,7 +79,7 @@ git --version
 ```
 
 
-## Containerization Software
+### Containerization Software
 
 For those wishing to follow along with the containerization software, we recommend that users install either:
 
@@ -94,13 +118,13 @@ without an error.
 
 - A basic reproducibility image: [hub.docker.com/r/gjhunt/repro](https://hub.docker.com/r/gjhunt/repro)
 
-One may pull this using podman as
+One may run this using podman
 ```
-podman run -it --rm -p 8888:8888 -p 8787:8787 gjhunt/repro
+podman run --rm -it -p 127.0.0.1:8080:80 docker.io/gjhunt/repro
 ```
-or with docker as
+or with docker
 ```
-docker run -it --rm -p 8888:8888 -p 8787:8787 gjhunt/repro
+docker run --rm -it -p 127.0.0.1:8080:80 docker.io/gjhunt/repro
 ```
 
 
